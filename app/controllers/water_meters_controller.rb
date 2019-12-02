@@ -10,7 +10,7 @@ class WaterMetersController < ApplicationController
 
   def create
     @water_meter = WaterMeter.create!(
-        params.fetch(key :water_meter).
+        params.fetch(:water_meter).
             permit(:cold, :hot, :check_date)
     )
 
@@ -18,6 +18,13 @@ class WaterMetersController < ApplicationController
   end
 
   def show
+    @water_meter = WaterMeter.find(params[:id])
+  end
 
+  def destroy
+    @water_meter = WaterMeter.find(params[:id])
+    @water_meter.destroy!
+
+    redirect_to '/'
   end
 end
