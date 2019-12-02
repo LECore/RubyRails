@@ -1,0 +1,3 @@
+class WaterMeter < ApplicationRecord
+
+end

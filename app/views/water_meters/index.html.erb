@@ -34,66 +34,13 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-          <th>Январь</th>
-          <td>231</td>
-          <td>43</td>
-        </tr>
-        <tr>
-          <th>Февраль</th>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <th>Март</th>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <th>Апрель</th>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <th>Май</th>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <th>Июнь</th>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <th>Июль</th>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <th>Август</th>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <th>Сентябрь</th>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <th>Октябрь</th>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <th>Ноябрь</th>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <th>Декабрь</th>
-          <td></td>
-          <td></td>
-        </tr>
+        <% @water_meters.each do |water_meter| %>
+          <tr>
+            <th><%= water_meter.check_date %></th>
+            <td><%= water_meter.hot %></td>
+            <td><%= water_meter.cold %></td>
+          </tr>
+        <% end %>
         </tbody>
       </table>
     </div>
