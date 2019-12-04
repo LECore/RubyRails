@@ -10,6 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2019_12_02_162413) do
+
+  create_table "water_meters", force: :cascade do |t|
+    t.date "check_date"
+    t.float "hot"
+    t.float "cold"
+  end
 
 end
