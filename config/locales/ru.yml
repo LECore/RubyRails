@@ -1,0 +1,35 @@
+ru:
+  activerecord:
+    models:
+      water_meter: показания счетчиков
+    attributes:
+      water_meter:
+        cold: Холодная
+        hot: Горячая
+        check_date: Дата
+
+  helpers:
+    submit:
+      water_meter:
+        create: Отправить
+        update: Отправить
+
+  water_meters:
+    index:
+      title: Показатели счетчиков воды
+      month: Месяц
+      water_meters: Показатели воды
+      destroy_link: Удалить
+      month_names:
+        - Январь
+        - Февраль
+        - Март
+        - Апрель
+        - Май
+        - Июнь
+        - Июль
+        - Август
+        - Сентябрь
+        - Октябрь
+        - Ноябрь
+        - Декабрь

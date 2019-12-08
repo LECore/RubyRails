@@ -1,6 +1,6 @@
-body
+
   header.jumbotron.text-center
-    h1 Показатели счетчиков воды
+    h1 =t('.title')
     nav
       ul.nav.nav-pills.justify-content-center
         li.nav-item
@@ -17,26 +17,29 @@ body
         table.table.table-bordered
           thead
             tr
-              th rowspan="2"  Месяц
-              th.title colspan="2"  Показатели воды
+              th rowspan="2"= t('.month')
+              th.title colspan="3"= t('.water_meters')
             tr
-              th#time Холодная
-              th Горячая
+              th= WaterMeter.human_attribute_name(:cold)
+              th= WaterMeter.human_attribute_name(:hot)
+              th
           tbody
-            - @water_meters.each do |water_meter|
+            - 12.times do |month_number|
+              - water_meter = @water_meter_by_months[month_number + 1]
               tr
-                th= water_meter.check_date
-                td= water_meter.cold
-                td= water_meter.hot
+                th= t('.month_names')[month_number]
+                td= water_meter&.cold
+                td= water_meter&.hot
+                td
+                  = link_to t('.destroy_link'),
+                          destroy_by_month_water_meters_path(params[:year], month_number + 1),
+                          method: :delete
       aside.col-lg-4
-        form
+        = simple_form_for(@water_meter) do |f|
           fieldset.form-group
-            legend Показатели воды
-            label.mr-sm-2 for="cold"  Холодная
-            input#cold.form-control name="cold" type="" /
-            label.mr-sm-2 for="hot"  Горячая
-            input#hot.form-control name="hot" type="" /
-          .form-group
-            label for="date"  Дата
-            input#date.form-control name="date" type="date" /
-          button.btn.btn-outline-primary Отправить
+            legend =t('.water_meters')
+            = f.input :cold, input_html: { class: 'form-control' }
+            = f.input :hot, input_html: { class: 'form-control' }
+            label for="date"
+            = f.input :check_date, html5: true, input_html: { class: 'form-control' }
+          = f.submit class: ['btn', 'btn-outline-primary']

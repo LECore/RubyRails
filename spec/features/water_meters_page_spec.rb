@@ -16,52 +16,36 @@ require 'rails_helper'
 #   end
 # end
 
-
-
-RSpec.describe 'Water meters page', type: :system do
+describe 'Water meters page', type: :system do
   before { driven_by :selenium, using: :chrome }
   before { visit '/' }
 
   it 'have a right title' do
-    expect(page).to have_text('Показатели счетчиков воды')
+    expect(page).to have_text('Water Meters')
   end
 
   describe 'Check table' do
     before 'fill table' do
-      fill_in 'Дата', with: '01.12.2019'
-      fill_in 'Холодная', with: '53452345'
-      fill_in 'Горячая',  with: '12'
 
-      click_button 'Отправить'
-      sleep 5
+      (1..12).each do |i|
+        fill_in 'Cold', with: i+1*2
+        fill_in 'Hot',  with: i*10
+        if i != 1
+          fill_in 'Date', with: "01.#{i}.2019"
+        else fill_in 'Date', with: "01.0#{i}.2019"
+        end
+
+        # sleep 1
+        click_button 'Send'
+      end
+      sleep 3
     end
 
     it 'have a right table data' do
-      expect(page).to have_xpath('//td', text: '53452345.0')
+      (1..12).each do |i|
+        expect(page).to have_text i+1*2
+        expect(page).to have_text i*10
+      end
     end
   end
 end
-
-
-# describe 'Check table' do
-#   let(:values) { [1,2,3] }
-#
-#   before 'fill table' do
-#     fill_in 'Дата', with: "01.#{i = 0, i < 12  do
-#
-#     end}.2019"
-#
-#     12.times do |i|
-#
-#     end
-#     fill_in 'Холодная', with: '53452345'
-#     fill_in 'Горячая',  with: '12'
-#
-#     click_button 'Отправить'
-#     sleep 5
-#   end
-#
-#   it 'have a right table data' do
-#     expect(page).to have_xpath('//td', text: '53452345.0')
-#   end
-# end

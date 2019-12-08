@@ -30,4 +30,37 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  activerecord:
+    models:
+      water_meter: water meters data
+    attributes:
+      water_meter:
+        cold: Cold
+        hot: Hot
+        check_date: Date
+
+  helpers:
+    submit:
+      water_meter:
+        create: Send
+        update: Send
+
+  water_meters:
+    index:
+      title: Water Meters
+      month: Month
+      water_meters: Water indicators
+      destroy_link: Delete
+      month_names:
+        - January
+        - February
+        - March
+        - April
+        - May
+        - June
+        - July
+        - August
+        - September
+        - October
+        - November
+        - December
